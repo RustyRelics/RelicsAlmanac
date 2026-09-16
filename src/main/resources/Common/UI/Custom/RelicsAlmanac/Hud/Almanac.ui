@@ -1,0 +1,20 @@
+Group #AlmanacHud {
+    Anchor: (Top: 10, Left: 10, Width: 250, Height: 80);
+    Background: #000000(0.2);
+
+    Label #CoordsText {
+        Anchor: (Top: 10, Left: 10, Right: 10, Height: 36);
+        Style: (FontSize: 18, Alignment: Center);
+        Text: "";
+    }
+    Label #BiomeText {
+        Anchor: (Top: 46, Left: 10, Right: 10, Height: 32);
+        Style: (FontSize: 16, Alignment: Center, TextColor: #96a9be);
+        Text: "";
+    }
+    Label #TimeText {
+        Anchor: (Top: 78, Left: 10, Right: 10, Height: 36);
+        Style: (FontSize: 18, Alignment: Center);
+        Text: "";
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "Group": "RustyRelic",
+    "Name": "RelicsAlmanac",
+    "Version": "0.1.0",
+    "Description": "Relic's Almanac - Coordinates, Clock & Biome",
+    "Authors": [
+        {
+            "Name": "RustyRelic",
+            "Url": "https://github.com/RustyRelics"
+        }
+    ],
+    "Website": "https://github.com/RustyRelics/RelicsAlmanac",
+    "DisabledByDefault": false,
+    "IncludesAssetPack": true,
+    "Dependencies": {
+        "Hytale:AssetModule": "*"
+    },
+    "OptionalDependencies": {
+        
+    },
+    "ServerVersion": ">=0.6.6 <0.7.0",
+    "Main": "com.rustyrelic.hytale.almanac.AlmanacPlugin",
+    "UpdateChecker": {
+        "CurseForge": ""
+    }
+}
