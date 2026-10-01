@@ -12,8 +12,14 @@ public class CoordsToggleCommand extends AlmanacToggleCommand {
 
     @Nonnull
     @Override
-    protected String label() {
-        return "Coordinates";
+    protected String onMessageKey() {
+        return "almanac.coords.on";
+    }
+
+    @Nonnull
+    @Override
+    protected String offMessageKey() {
+        return "almanac.coords.off";
     }
 
     @Override

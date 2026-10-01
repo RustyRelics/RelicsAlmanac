@@ -23,7 +23,7 @@ public class AlmanacSizeCommand extends AbstractPlayerCommand {
     private static final int MAX = 9;
 
     @Nonnull
-    private final RequiredArg<Integer> sizeArg = withRequiredArg("level", "Overall HUD scale, 1-9 (3 is the default)", ArgTypes.INTEGER);
+    private final RequiredArg<Integer> sizeArg = withRequiredArg("level", "almanac.size.arg.level.desc", ArgTypes.INTEGER);
 
     public AlmanacSizeCommand(@Nonnull String name, @Nonnull String description) {
         super(name, description);
@@ -39,7 +39,7 @@ public class AlmanacSizeCommand extends AbstractPlayerCommand {
 
         int level = sizeArg.get(context);
         if (level < MIN || level > MAX) {
-            context.sendMessage(Message.raw("Size must be between " + MIN + " and " + MAX + "."));
+            context.sendMessage(Message.translation("almanac.size.outOfRange").param("min", MIN).param("max", MAX));
             return;
         }
 
@@ -48,6 +48,6 @@ public class AlmanacSizeCommand extends AbstractPlayerCommand {
 
         AlmanacHud.sync(player, playerRef, data);
 
-        context.sendMessage(Message.raw("Almanac HUD size set to " + level));
+        context.sendMessage(Message.translation("almanac.size.set").param("level", level));
     }
 }

@@ -12,8 +12,14 @@ public class BiomeToggleCommand extends AlmanacToggleCommand {
 
     @Nonnull
     @Override
-    protected String label() {
-        return "Biome";
+    protected String onMessageKey() {
+        return "almanac.biome.on";
+    }
+
+    @Nonnull
+    @Override
+    protected String offMessageKey() {
+        return "almanac.biome.off";
     }
 
     @Override

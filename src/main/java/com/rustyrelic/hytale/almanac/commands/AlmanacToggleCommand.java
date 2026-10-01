@@ -20,6 +20,11 @@ import javax.annotation.Nonnull;
  * every row here is a self-toggle, never targeting another player, so there's no target
  * argument and no nullable-sender case to guard against. A console sender is already
  * rejected by {@code AbstractPlayerCommand} itself before {@link #execute} ever runs.
+ * <p>
+ * Each row supplies its own fully-baked on/off translation keys rather than this base
+ * composing a sentence from a label fragment + a state fragment — word order for "is now
+ * on/off" isn't guaranteed to hold across languages, so each state is one complete,
+ * independently-translatable sentence.
  */
 abstract class AlmanacToggleCommand extends AbstractPlayerCommand {
 
@@ -31,7 +36,10 @@ abstract class AlmanacToggleCommand extends AbstractPlayerCommand {
     }
 
     @Nonnull
-    protected abstract String label();
+    protected abstract String onMessageKey();
+
+    @Nonnull
+    protected abstract String offMessageKey();
 
     protected abstract boolean toggle(@Nonnull AlmanacPlayerData data);
 
@@ -51,6 +59,6 @@ abstract class AlmanacToggleCommand extends AbstractPlayerCommand {
 
         AlmanacHud.sync(player, playerRef, data);
 
-        context.sendMessage(Message.raw(label() + " display is now " + (enabled ? "on" : "off")));
+        context.sendMessage(Message.translation(enabled ? onMessageKey() : offMessageKey()));
     }
 }

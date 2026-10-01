@@ -1,0 +1,37 @@
+# Relic's Almanac — en-US catalog. File name becomes the key prefix ("almanac."),
+# per I18nModule's directory-walk convention.
+
+# Command and subcommand descriptions — shown in /help and tab-complete.
+desc = Coordinates, clock and biome HUD
+all.desc = Toggle the whole display on or off
+coords.desc = Toggle the coordinates row
+biome.desc = Toggle the biome row
+time.desc = Toggle the time-of-day row
+position.desc = Anchor the HUD to a screen corner
+position.arg.corner.desc = Which screen corner to anchor to
+size.desc = Set the overall HUD scale
+size.arg.level.desc = Overall HUD scale, 1-9 (3 is the default)
+
+# Toggle replies — one full sentence per row per state, not a glued-together
+# label + state fragment, so word order can differ freely across languages.
+coords.on = Coordinates display is now on
+coords.off = Coordinates display is now off
+biome.on = Biome display is now on
+biome.off = Biome display is now off
+time.on = Time of day display is now on
+time.off = Time of day display is now off
+
+# Master toggle replies.
+all.on = Almanac display is now on
+all.off = Almanac display is now off
+all.enabledEverything = Almanac display is now on — coordinates, biome and time all enabled
+
+# Position replies — one full sentence per corner, same reasoning as the toggles.
+position.anchored.topLeft = Almanac HUD anchored to the top left
+position.anchored.topRight = Almanac HUD anchored to the top right
+position.anchored.bottomLeft = Almanac HUD anchored to the bottom left
+position.anchored.bottomRight = Almanac HUD anchored to the bottom right
+
+# Size replies.
+size.outOfRange = Size must be between {min} and {max}.
+size.set = Almanac HUD size set to {level}

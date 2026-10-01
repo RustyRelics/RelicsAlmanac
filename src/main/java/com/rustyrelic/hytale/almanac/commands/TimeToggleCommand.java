@@ -12,8 +12,14 @@ public class TimeToggleCommand extends AlmanacToggleCommand {
 
     @Nonnull
     @Override
-    protected String label() {
-        return "Time of day";
+    protected String onMessageKey() {
+        return "almanac.time.on";
+    }
+
+    @Nonnull
+    @Override
+    protected String offMessageKey() {
+        return "almanac.time.off";
     }
 
     @Override

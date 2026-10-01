@@ -15,11 +15,11 @@ public class AlmanacCommand extends AbstractCommandCollection {
         super(name, description);
         requireNoPermission();
         addAliases("ra");
-        addSubCommand(new AllToggleCommand("all", "Toggle the whole display on or off"));
-        addSubCommand(new CoordsToggleCommand("coords", "Toggle the coordinates row"));
-        addSubCommand(new BiomeToggleCommand("biome", "Toggle the biome row"));
-        addSubCommand(new TimeToggleCommand("time", "Toggle the time-of-day row"));
-        addSubCommand(new AlmanacPositionCommand("position", "Anchor the HUD to a screen corner"));
-        addSubCommand(new AlmanacSizeCommand("size", "Set the overall HUD scale"));
+        addSubCommand(new AllToggleCommand("all", "almanac.all.desc"));
+        addSubCommand(new CoordsToggleCommand("coords", "almanac.coords.desc"));
+        addSubCommand(new BiomeToggleCommand("biome", "almanac.biome.desc"));
+        addSubCommand(new TimeToggleCommand("time", "almanac.time.desc"));
+        addSubCommand(new AlmanacPositionCommand("position", "almanac.position.desc"));
+        addSubCommand(new AlmanacSizeCommand("size", "almanac.size.desc"));
     }
 }

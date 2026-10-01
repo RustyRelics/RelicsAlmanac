@@ -20,7 +20,7 @@ public class AlmanacPlugin extends JavaPlugin {
     protected void setup() {
         AlmanacPlayerData.init(this);
         this.getEntityStoreRegistry().registerSystem(new AlmanacTickSystem());
-        this.getCommandRegistry().registerCommand(new AlmanacCommand("almanac", "Coordinates, clock and biome HUD"));
+        this.getCommandRegistry().registerCommand(new AlmanacCommand("almanac", "almanac.desc"));
         this.getEventRegistry().registerGlobal(PlayerReadyEvent.class, AlmanacPlayerReadyListener::onPlayerReady);
     }
 }

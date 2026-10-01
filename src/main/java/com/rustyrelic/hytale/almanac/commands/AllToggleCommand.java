@@ -49,13 +49,13 @@ public class AllToggleCommand extends AbstractPlayerCommand {
             data.setShowTime(true);
             data.setAllEnabled(true);
             AlmanacHud.sync(player, playerRef, data);
-            context.sendMessage(Message.raw("Almanac display is now on — coordinates, biome and time all enabled"));
+            context.sendMessage(Message.translation("almanac.all.enabledEverything"));
             return;
         }
 
         boolean enabled = !data.isAllEnabled();
         data.setAllEnabled(enabled);
         AlmanacHud.sync(player, playerRef, data);
-        context.sendMessage(Message.raw("Almanac display is now " + (enabled ? "on" : "off")));
+        context.sendMessage(Message.translation(enabled ? "almanac.all.on" : "almanac.all.off"));
     }
 }

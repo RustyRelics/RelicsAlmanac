@@ -16,13 +16,12 @@ import com.rustyrelic.hytale.almanac.components.HudCorner;
 import com.rustyrelic.hytale.almanac.hud.AlmanacHud;
 
 import javax.annotation.Nonnull;
-import java.util.Locale;
 
 @SuppressWarnings("this-escape") // withRequiredArg as a field initializer is the engine's own required pattern (see e.g. WorldMapViewRadiusSetCommand); this class is a concrete leaf, never subclassed
 public class AlmanacPositionCommand extends AbstractPlayerCommand {
 
     @Nonnull
-    private final RequiredArg<HudCorner> cornerArg = withRequiredArg("corner", "Which screen corner to anchor to", ArgTypes.forEnum("corner", HudCorner.class));
+    private final RequiredArg<HudCorner> cornerArg = withRequiredArg("corner", "almanac.position.arg.corner.desc", ArgTypes.forEnum("corner", HudCorner.class));
 
     public AlmanacPositionCommand(@Nonnull String name, @Nonnull String description) {
         super(name, description);
@@ -42,6 +41,21 @@ public class AlmanacPositionCommand extends AbstractPlayerCommand {
 
         AlmanacHud.sync(player, playerRef, data);
 
-        context.sendMessage(Message.raw("Almanac HUD anchored to " + corner.name().toLowerCase(Locale.ROOT).replace('_', ' ')));
+        context.sendMessage(Message.translation(anchoredMessageKey(corner)));
+    }
+
+    /**
+     * One fully-baked sentence per corner rather than interpolating a corner name into a
+     * shared template — same "don't glue translated fragments together" reasoning as the
+     * toggle commands' on/off keys.
+     */
+    @Nonnull
+    private static String anchoredMessageKey(@Nonnull HudCorner corner) {
+        return switch (corner) {
+            case TOP_LEFT -> "almanac.position.anchored.topLeft";
+            case TOP_RIGHT -> "almanac.position.anchored.topRight";
+            case BOTTOM_LEFT -> "almanac.position.anchored.bottomLeft";
+            case BOTTOM_RIGHT -> "almanac.position.anchored.bottomRight";
+        };
     }
 }
