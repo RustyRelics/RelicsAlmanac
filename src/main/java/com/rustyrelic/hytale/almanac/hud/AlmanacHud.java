@@ -44,6 +44,8 @@ public class AlmanacHud extends CustomUIHud {
     @Nonnull
     private HudCorner corner = HudCorner.TOP_LEFT;
     private int margin = 10;
+    private int offsetX = 0;
+    private int offsetY = 0;
     private int sizeLevel = 3;
 
     @Nullable
@@ -61,6 +63,8 @@ public class AlmanacHud extends CustomUIHud {
     public void applyConfig(@Nonnull AlmanacDisplayConfig config) {
         this.corner = config.getCorner();
         this.margin = config.getMargin();
+        this.offsetX = config.getOffsetX();
+        this.offsetY = config.getOffsetY();
         this.sizeLevel = config.getSizeLevel();
     }
 
@@ -128,23 +132,38 @@ public class AlmanacHud extends CustomUIHud {
         return top + height;
     }
 
+    /**
+     * Sets the two edge insets for the current corner.
+     * <p>
+     * {@code offsetX}/{@code offsetY} are <b>screen-space</b> (+X right, +Y down) for every
+     * corner, but an {@code Anchor} inset measures distance <em>inward from its own edge</em>:
+     * Left/Top grow as the HUD moves right/down, Right/Bottom <em>shrink</em>. So the offset is
+     * added to a Left/Top inset and subtracted from a Right/Bottom one. Insets may go negative
+     * (Hytale's own {@code .ui} files do this), which is how a nudge can carry the HUD past the
+     * margin and off the edge — recovery is {@code position <corner>} / {@code position reset}.
+     */
     private void applyCorner(@Nonnull Anchor anchor) {
+        Value<Integer> fromLeft = Value.of(margin + offsetX);
+        Value<Integer> fromRight = Value.of(margin - offsetX);
+        Value<Integer> fromTop = Value.of(margin + offsetY);
+        Value<Integer> fromBottom = Value.of(margin - offsetY);
+
         switch (corner) {
             case TOP_LEFT -> {
-                anchor.setTop(Value.of(margin));
-                anchor.setLeft(Value.of(margin));
+                anchor.setTop(fromTop);
+                anchor.setLeft(fromLeft);
             }
             case TOP_RIGHT -> {
-                anchor.setTop(Value.of(margin));
-                anchor.setRight(Value.of(margin));
+                anchor.setTop(fromTop);
+                anchor.setRight(fromRight);
             }
             case BOTTOM_LEFT -> {
-                anchor.setBottom(Value.of(margin));
-                anchor.setLeft(Value.of(margin));
+                anchor.setBottom(fromBottom);
+                anchor.setLeft(fromLeft);
             }
             case BOTTOM_RIGHT -> {
-                anchor.setBottom(Value.of(margin));
-                anchor.setRight(Value.of(margin));
+                anchor.setBottom(fromBottom);
+                anchor.setRight(fromRight);
             }
         }
     }

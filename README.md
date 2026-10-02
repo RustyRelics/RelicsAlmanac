@@ -15,7 +15,9 @@ All subcommands live under `/almanac` (alias: `/ra`). Every setting is per-playe
 | `/almanac coords` | Toggles the coordinates row. |
 | `/almanac biome` | Toggles the current-biome row. |
 | `/almanac time` | Toggles the in-game time-of-day row. |
-| `/almanac position <top_left\|top_right\|bottom_left\|bottom_right>` | Anchors the HUD to a screen corner — handy for staying clear of other mods' HUDs. |
+| `/almanac position <top_left\|top_right\|bottom_left\|bottom_right>` | Anchors the HUD to a screen corner and clears any nudge. |
+| `/almanac position reset` | Clears the nudge and keeps the current corner. |
+| `/almanac nudge <left\|right\|up\|down> [px]` | Moves the HUD `px` pixels (1–50, default 10) from where it is now. Repeat it to fine-tune — handy for staying clear of other mods' HUDs. If you nudge it somewhere you can't see, `/almanac position reset` (or any `position <corner>`) brings it back. |
 | `/almanac size <1-9>` | Sets the overall HUD scale (fonts, spacing, width all scale together). `3` is the default. |
 
 Turning on any individual row also turns the whole display on, so you don't have to run `/almanac all` separately after your first toggle.

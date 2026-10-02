@@ -40,6 +40,14 @@ public class AlmanacPlayerData implements Component<EntityStore>, AlmanacDisplay
                     .append(new KeyedCodec<>("Margin", Codec.INTEGER), AlmanacPlayerData::setMargin, AlmanacPlayerData::getMargin)
                     .documentation("Pixel margin from the anchored corner")
                     .add()
+                    // Added after v0.2.0. Absent from older saves, which is fine: BuilderCodec only
+                    // visits keys present in the stored document, so these keep their field default (0).
+                    .append(new KeyedCodec<>("OffsetX", Codec.INTEGER), AlmanacPlayerData::setOffsetX, AlmanacPlayerData::getOffsetX)
+                    .documentation("Horizontal nudge from the corner in pixels; screen-space, positive = right")
+                    .add()
+                    .append(new KeyedCodec<>("OffsetY", Codec.INTEGER), AlmanacPlayerData::setOffsetY, AlmanacPlayerData::getOffsetY)
+                    .documentation("Vertical nudge from the corner in pixels; screen-space, positive = down")
+                    .add()
                     .append(new KeyedCodec<>("SizeLevel", Codec.INTEGER), AlmanacPlayerData::setSizeLevel, AlmanacPlayerData::getSizeLevel)
                     .documentation("Overall HUD scale, 1-9 (3 = default)")
                     .add()
@@ -53,6 +61,8 @@ public class AlmanacPlayerData implements Component<EntityStore>, AlmanacDisplay
     private boolean allEnabled = true;
     private HudCorner corner = HudCorner.TOP_LEFT;
     private int margin = 10;
+    private int offsetX = 0;
+    private int offsetY = 0;
     private int sizeLevel = 3;
 
     @Override
@@ -110,6 +120,30 @@ public class AlmanacPlayerData implements Component<EntityStore>, AlmanacDisplay
     }
 
     @Override
+    public int getOffsetX() {
+        return offsetX;
+    }
+
+    public void setOffsetX(int offsetX) {
+        this.offsetX = offsetX;
+    }
+
+    @Override
+    public int getOffsetY() {
+        return offsetY;
+    }
+
+    public void setOffsetY(int offsetY) {
+        this.offsetY = offsetY;
+    }
+
+    /** Zeroes both nudge offsets, leaving the corner and margin alone. */
+    public void resetOffsets() {
+        this.offsetX = 0;
+        this.offsetY = 0;
+    }
+
+    @Override
     public int getSizeLevel() {
         return sizeLevel;
     }
@@ -127,6 +161,8 @@ public class AlmanacPlayerData implements Component<EntityStore>, AlmanacDisplay
         copy.allEnabled = this.allEnabled;
         copy.corner = this.corner;
         copy.margin = this.margin;
+        copy.offsetX = this.offsetX;
+        copy.offsetY = this.offsetY;
         copy.sizeLevel = this.sizeLevel;
         return copy;
     }

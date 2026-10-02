@@ -7,8 +7,11 @@ all.desc = Toggle the whole display on or off
 coords.desc = Toggle the coordinates row
 biome.desc = Toggle the biome row
 time.desc = Toggle the time-of-day row
-position.desc = Anchor the HUD to a screen corner
-position.arg.corner.desc = Which screen corner to anchor to
+position.desc = Anchor the HUD to a screen corner, or reset its nudge offset
+position.arg.corner.desc = Which screen corner to anchor to (this also clears any nudge), or reset to clear the nudge and keep the current corner
+nudge.desc = Move the HUD a few pixels on screen
+nudge.arg.direction.desc = Which way to move the HUD: left, right, up or down
+nudge.arg.px.desc = How many pixels to move, 1-50 (10 if left out)
 size.desc = Set the overall HUD scale
 size.arg.level.desc = Overall HUD scale, 1-9 (3 is the default)
 
@@ -31,6 +34,14 @@ position.anchored.topLeft = Almanac HUD anchored to the top left
 position.anchored.topRight = Almanac HUD anchored to the top right
 position.anchored.bottomLeft = Almanac HUD anchored to the bottom left
 position.anchored.bottomRight = Almanac HUD anchored to the bottom right
+position.reset = Almanac HUD nudge cleared — corner unchanged
+
+# Nudge replies — one full sentence per direction. {px} is a plain number, not a glued fragment.
+nudge.moved.left = Almanac HUD moved {px}px left
+nudge.moved.right = Almanac HUD moved {px}px right
+nudge.moved.up = Almanac HUD moved {px}px up
+nudge.moved.down = Almanac HUD moved {px}px down
+nudge.outOfRange = Nudge must be between {min} and {max} pixels.
 
 # Size replies.
 size.outOfRange = Size must be between {min} and {max}.

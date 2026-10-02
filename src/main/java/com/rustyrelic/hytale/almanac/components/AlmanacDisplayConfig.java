@@ -25,6 +25,20 @@ public interface AlmanacDisplayConfig {
 
     int getMargin();
 
+    /**
+     * Horizontal nudge from the corner position, in pixels. <b>Screen-space sign convention,
+     * identical for all four corners:</b> positive moves the HUD right, negative moves it left.
+     * It is deliberately <em>not</em> "away from the anchored edge" — see
+     * {@code AlmanacHud#applyCorner} for how that gets translated per corner.
+     */
+    int getOffsetX();
+
+    /**
+     * Vertical nudge from the corner position, in pixels. Screen-space sign convention,
+     * identical for all four corners: positive moves the HUD <b>down</b>, negative moves it up.
+     */
+    int getOffsetY();
+
     /** 1-9, where 3 is the hand-tuned default all other levels scale from. */
     int getSizeLevel();
 }

@@ -20,6 +20,7 @@ public class AlmanacCommand extends AbstractCommandCollection {
         addSubCommand(new BiomeToggleCommand("biome", "almanac.biome.desc"));
         addSubCommand(new TimeToggleCommand("time", "almanac.time.desc"));
         addSubCommand(new AlmanacPositionCommand("position", "almanac.position.desc"));
+        addSubCommand(new AlmanacNudgeCommand("nudge", "almanac.nudge.desc"));
         addSubCommand(new AlmanacSizeCommand("size", "almanac.size.desc"));
     }
 }
